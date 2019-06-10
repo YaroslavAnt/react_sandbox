@@ -1,4 +1,39 @@
 .App {
   font-family: sans-serif;
-  text-align: center;
+  margin: 0 auto;
+  background: #eee;
+  min-height: 100vh;
+}
+
+.wrapper {
+  width: 600px;
+  border: 1px solid #aaa;
+  padding: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+.ml-20 {
+  margin-left: 20px;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.align-center {
+  align-tems: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
