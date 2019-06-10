@@ -1,72 +1,61 @@
-import React from "react";
-// import MyListItem from "../components/MyListItem";
+import React, { useState } from "react";
 import Row from "./Row";
 import "./MyList.css";
 import MyForm from "./MyForm";
 
-class MyList extends React.Component {
-  state = {
-    items: ["Tea", "Coffee", "Milk"]
+const MyList = () => {
+  const [items, onChangeItems] = useState(["Tea", "Coffee", "Milk"]);
+
+  const onAdd = value => {
+    let newArr = [...items];
+    newArr.push(value);
+    onChangeItems(newArr);
   };
 
-  onSubmit = value => {
-    this.setState({
-      items: [...this.state.items, value]
-    });
+  const onUp = idx => {
+    let newArr = [...items];
+
+    onChangeItems([
+      ...newArr.slice(0, idx - 1),
+      ...newArr.slice(idx - 1, idx + 1).reverse(),
+      ...newArr.slice(idx + 1)
+    ]);
   };
 
-  onUp = idx => {
-    let newArr = [...this.state.items];
+  const onDown = idx => {
+    let newArr = [...items];
 
-    this.setState({
-      items: [
-        ...newArr.slice(0, idx - 1),
-        ...newArr.slice(idx - 1, idx + 1).reverse(),
-        ...newArr.slice(idx + 1)
-      ]
-    });
+    onChangeItems([
+      ...newArr.slice(0, idx),
+      ...newArr.slice(idx, idx + 2).reverse(),
+      ...newArr.slice(idx + 2)
+    ]);
   };
 
-  onDown = idx => {
-    let newArr = [...this.state.items];
-
-    this.setState({
-      items: [
-        ...newArr.slice(0, idx),
-        ...newArr.slice(idx, idx + 2).reverse(),
-        ...newArr.slice(idx + 2)
-      ]
-    });
-  };
-
-  onDelete = idx => {
-    let newArr = [...this.state.items];
+  const onDelete = idx => {
+    let newArr = [...items];
     newArr.splice(idx, 1);
-    this.setState({
-      items: newArr
-    });
+    onChangeItems(newArr);
   };
 
-  render() {
-    return (
-      <div>
-        {this.state.items.map((item, idx, arr) => {
-          return (
-            <Row
-              idx={idx}
-              amount={arr.length}
-              onUp={() => this.onUp(idx)}
-              onDown={() => this.onDown(idx)}
-              onDelete={() => this.onDelete(idx)}
-              name={item}
-            />
-          );
-        })}
+  return (
+    <div>
+      {items.map((item, idx, arr) => {
+        return (
+          <Row
+            idx={idx}
+            amount={arr.length}
+            onUp={() => onUp(idx)}
+            onDown={() => onDown(idx)}
+            onDelete={() => onDelete(idx)}
+            name={item}
+          />
+        );
+      })}
 
-        <MyForm onSubmit={this.onSubmit} />
-      </div>
-    );
-  }
-}
+      <MyForm onSubmit={onAdd} />
+    </div>
+  );
+};
 
 export default MyList;

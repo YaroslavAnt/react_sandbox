@@ -8,6 +8,7 @@ const MyForm = props => {
       onSubmit={e => {
         e.preventDefault();
         props.onSubmit(value);
+        onChange("");
       }}
     >
       <input
