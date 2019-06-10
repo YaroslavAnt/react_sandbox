@@ -1,7 +1,7 @@
 import React from "react";
 import "./MyItem.css";
 
-const MyItem = props => {
+const Controlls = props => {
   return (
     <div className="my-listitem__item">
       <h2 className="my-listitem__name">{props.name}</h2>
@@ -35,4 +35,4 @@ const MyItem = props => {
   );
 };
 
-export default MyItem;
+export default Controlls;

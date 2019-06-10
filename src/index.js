@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
-import MyList from "./containers/MyList";
+import MyList from "./components/MyList";
 import Header from "./components/Header";
 
 function App() {

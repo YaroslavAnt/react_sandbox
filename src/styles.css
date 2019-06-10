@@ -6,7 +6,7 @@
 }
 
 .wrapper {
-  width: 600px;
+  width: 800px;
   border: 1px solid #aaa;
   padding: 20px;
 }
@@ -36,4 +36,8 @@
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
 }

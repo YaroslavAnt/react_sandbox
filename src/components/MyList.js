@@ -4,8 +4,7 @@ import "./MyList.css";
 import MyForm from "./MyForm";
 
 const MyList = () => {
-  const [items, onChangeItems] = useState(["Tea", "Coffee", "Milk"]);
-
+  const [items, onChangeItems] = useState([]);
   const onAdd = value => {
     let newArr = [...items];
     newArr.push(value);
@@ -14,7 +13,6 @@ const MyList = () => {
 
   const onUp = idx => {
     let newArr = [...items];
-
     onChangeItems([
       ...newArr.slice(0, idx - 1),
       ...newArr.slice(idx - 1, idx + 1).reverse(),
@@ -24,7 +22,6 @@ const MyList = () => {
 
   const onDown = idx => {
     let newArr = [...items];
-
     onChangeItems([
       ...newArr.slice(0, idx),
       ...newArr.slice(idx, idx + 2).reverse(),
@@ -40,18 +37,20 @@ const MyList = () => {
 
   return (
     <div>
-      {items.map((item, idx, arr) => {
-        return (
-          <Row
-            idx={idx}
-            amount={arr.length}
-            onUp={() => onUp(idx)}
-            onDown={() => onDown(idx)}
-            onDelete={() => onDelete(idx)}
-            name={item}
-          />
-        );
-      })}
+      <ul className="mb-40">
+        {items.map((item, idx, arr) => {
+          return (
+            <Row
+              idx={idx}
+              amount={arr.length}
+              onUp={() => onUp(idx)}
+              onDown={() => onDown(idx)}
+              onDelete={() => onDelete(idx)}
+              name={item}
+            />
+          );
+        })}
+      </ul>
 
       <MyForm onSubmit={onAdd} />
     </div>

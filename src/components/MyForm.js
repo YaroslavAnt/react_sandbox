@@ -10,6 +10,7 @@ const MyForm = props => {
         props.onSubmit(value);
         onChange("");
       }}
+      className="flexbox justify-end"
     >
       <input
         type="text"
