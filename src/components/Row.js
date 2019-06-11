@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Controlls from "./Controlls";
 import MyList from "./MyList";
 
 const Row = props => {
@@ -12,16 +11,35 @@ const Row = props => {
 
   return (
     <div className="row">
-      <Controlls
-        idx={props.idx}
-        amount={props.amount}
-        onUp={() => props.onUp()}
-        onDown={() => props.onDown()}
-        onChangeView={() => onChangeList()}
-        onDelete={() => props.onDelete()}
-        name={props.name}
-        isShowSublist={isShowSublist}
-      />
+      <div className="my-listitem__item">
+        <h2 className="my-listitem__name">{props.title}</h2>
+
+        <div>
+          <button onClick={onChangeList} className="btn btn-success">
+            {!isShowSublist ? "Add " : "Remove "}sublist
+          </button>
+
+          <button
+            onClick={props.onUp}
+            className="btn btn-warning ml-20"
+            disabled={props.idx === 0}
+          >
+            <span className="glyphicon glyphicon-upload" aria-hidden="true" />
+          </button>
+
+          <button
+            onClick={props.onDown}
+            className="btn btn-warning ml-10"
+            disabled={props.idx === props.amount - 1}
+          >
+            <span className="glyphicon glyphicon-download" aria-hidden="true" />
+          </button>
+
+          <button onClick={props.onDelete} className="btn btn-danger ml-10">
+            <span className="glyphicon glyphicon-trash" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
 
       {isShowSublist && <MyList />}
     </div>
