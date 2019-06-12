@@ -30,7 +30,7 @@ const Row = props => {
           <button
             onClick={props.onDown}
             className="btn btn-warning ml-10"
-            disabled={props.idx === props.amount - 1}
+            disabled={props.idx === props.itemsNumber - 1}
           >
             <span className="glyphicon glyphicon-download" aria-hidden="true" />
           </button>
